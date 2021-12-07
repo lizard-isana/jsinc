@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "JavaScript Client-side Includes",
   "scripts": {
-    "build:babel": "./node_modules/.bin/babel ./src/jsinc.es6.js -o ./dist/jsinc.js",
+    "build:babel": "babel ./src/jsinc.es6.js -o ./dist/jsinc.js",
     "build:uglifyjs": "uglifyjs ./dist/jsinc.js -o ./dist/jsinc.min.js",
     "build:copy": "node -e \"require('fs-extra').copySync('./dist/', './docs/assets/js/')\"",
     "build": "npm-run-all -s build:*"
