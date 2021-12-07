@@ -3,9 +3,9 @@
   "version": "0.0.1",
   "description": "JavaScript Client-side Includes",
   "scripts": {
-    "js:babel": "./node_modules/.bin/babel ./src/jsinc.es6.js -o ./dist/jsinc.js",
-    "js:uglifyjs": "uglifyjs ./dist/jsinc.js -o ./dist/jsinc.min.js",
-    "js": "npm-run-all -s js:*"
+    "build:babel": "./node_modules/.bin/babel ./src/jsinc.es6.js -o ./dist/jsinc.js",
+    "build:uglifyjs": "uglifyjs ./dist/jsinc.js -o ./dist/jsinc.min.js",
+    "build": "npm-run-all -s build:*"
   },
   "author": "Isana Kashiwai",
   "license": "MIT",

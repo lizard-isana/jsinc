@@ -1,7 +1,8 @@
 # JSInc - JavaScript Client-side Includes
 JavaScriptで外部htmlファイルをインクルードするためのライブラリです。
 
-## [Source Code](../dist/jsinc.js)
+## Source Code
+https://github.com/lizard-isana/jsinc/
 
 ## 使い方
 1. ライブラリを読み込む
