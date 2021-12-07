@@ -3,5 +3,5 @@
 ## Documents
 https://lizard-isana.github.io/jsinc/ (Japanese)
 
-License
+## License
 © 2021 Isana Kashiwai (MIT license)
