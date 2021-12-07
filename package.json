@@ -1,0 +1,22 @@
+{
+  "name": "jsinc",
+  "version": "0.0.1",
+  "description": "JavaScript Client-side Includes",
+  "scripts": {
+    "js:babel": "./node_modules/.bin/babel ./src/jsinc.es6.js -o ./dist/jsinc.js",
+    "js:uglifyjs": "uglifyjs ./dist/jsinc.js -o ./dist/jsinc.min.js",
+    "js": "npm-run-all -s js:*"
+  },
+  "author": "Isana Kashiwai",
+  "license": "MIT",
+  "browserslist": [
+    "defaults,not ie 11,not ie_mob 11"
+  ],
+  "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "npm-run-all": "^4.1.5",
+    "uglify-js": "^3.14.3"
+  }
+}

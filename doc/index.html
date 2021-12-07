@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSInc</title>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=default%2Ces2015%2CReflect.set%2Cfetch" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/12.2.0/markdown-it.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.7.0/highlightjs-line-numbers.min.js"></script>
+  <script src="../dist/jsinc.min.js"></script>
+  <link rel="stylesheet" href="./assets/css/default.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css" />
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+
+      const element = document.querySelector("#main");
+      const inc = new JSInc(element);
+
+      // 
+      inc.post_file_load_hook(function(file){
+        var md = window.markdownit({
+          html: true,
+          linkify: true,
+          breaks: true,
+          typographer: true,
+          highlight: function(code, lang) {
+            let highlighted_code
+            highlighted_code = hljs.highlightAuto(code, [lang]).value;
+            return highlighted_code
+          }
+        });
+        file = md.render(file);
+        return file;
+      })
+
+      inc.post_content_load_hook(function(){
+        var code_array = document.querySelectorAll('code[class*="language"]')
+        for (var i in code_array) {
+          var class_list = code_array[i].classList;
+          if(class_list && class_list.value.match(/language/)){
+            var lang = class_list.value.match(/(|\s)language-(.*)(|\s)/)[2];
+            code_array[i].setAttribute("data-language",lang);
+          }
+          if (code_array[i].parentNode) {
+            code_array[i].parentNode.classList.add("code")
+          }
+          hljs.lineNumbersBlock(code_array[i]);
+        }
+        return;
+      })
+
+      inc.load("index.md");
+
+    });
+
+  </script>
+  <style>
+    code{
+      position: relative;
+    }
+    code:after{
+      content:attr(data-language)"";
+      position: absolute;
+      font-weight: bold;
+      height: 20px;
+      top:-20px;
+      left:0px;
+      color: #333;
+      font-size: 12px;
+      padding:1px;
+    }
+  </style>
+</head>
+<body>
+  <main id="main">
+  </main>
+</body>
+</html>
