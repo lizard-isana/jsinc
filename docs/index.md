@@ -191,8 +191,8 @@ inc.post_file_load_hook(function(file){
 ## IE11 対応
 以下のような指定で`polyfill.io`のポリフィルを読み込むことで表示ができます。
 ```HTML
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=default%2Ces2015%2CReflect.set%2Cfetch" crossorigin="anonymous"></script>
-  <script src="/path/to/script/jsinc.min.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default%2Ces2015%2CReflect.set%2Cfetch" crossorigin="anonymous"></script>
+<script src="/path/to/script/jsinc.min.js"></script>
 ```
 
 ## License
