@@ -1,9 +1,9 @@
 # JSInc - JavaScript Client-side Includes
 JavaScriptで外部htmlファイルをインクルードするためのライブラリです。
 
-単にファイルを非同期で取得して埋め込むだけだと、CSSが効かなかったり、スクリプトが実行されなかったりしますが、その辺りがちゃんと動くようにしてあります。たとえば、外部ファイルにGTMのタグを埋めて読み込んでも動きます。
+単にファイルを非同期で取得して埋め込むと、ファイルに埋め込まれたCSSが効かなかったり、スクリプトが実行されなかったりしますが、その辺りがちゃんと動くようにしてあります。例えば、インクルードファイルにGTMのタグを埋め込んでも動きます。
 
-また、ファイルの読み込み、HTMLのパース、ページへの埋め込みなどの各過程にHookで割り込めるようにしてあるので、Markdownファイルを読み込んでHTMLに変換して表示したり（この文書はそうやって表示しています）、JSONファイルを読み込んでHTMLのリストに変換して表示させたり、セキュリティ対策でファイルの内容をサニタイズしてから表示するみたいなことも、わりと簡単にできます。
+また、ファイルの読み込み、HTMLのパース、ページへの埋め込みなどの各過程にHookで割り込めるようにしてあるので、Markdownファイルを読み込んでHTMLに変換して表示したり（この文書はそうやって表示しています）、JSONファイルを読み込んでHTMLのリストに変換して表示させたり、セキュリティ対策でファイルの内容をサニタイズしてから表示する、といったようなことも、比較的簡単にできます。
 
 ## Source Code
 https://github.com/lizard-isana/jsinc/
@@ -14,15 +14,9 @@ https://github.com/lizard-isana/jsinc/
 3. load()メソッドでファイルを読み込む
 
 ```HTML
-...
-<script src="/path/to/script/jsinc.js"></script>
-...
-```
 
-```HTML
-...
-<div id="include_target"></div>
-...
+<script src="/path/to/script/jsinc.js"></script>
+
 ```
 
 ```JavaScript 
@@ -33,13 +27,15 @@ document.addEventListener('DOMContentLoaded', function(){
 })
 ```
 
+```HTML
+<div data-include="include_file.html">
+  ( "include_file.html"の内容が表示されます )
+</div>
+```
+
+
 あるいは、HTMLのdata属性を使って、ファイル指定をHTML側に書いておけば、JSを書き換えることなくファイルを読み込めます。
 
-```HTML
-...
-<div data-include="include_file.html"></div>
-...
-```
 
 ```JavaScript
 document.addEventListener('DOMContentLoaded', function(){
@@ -51,6 +47,17 @@ document.addEventListener('DOMContentLoaded', function(){
     jsinc[i].load(file);
   }
 })
+```
+
+
+```HTML
+<div data-include="include_file_01.html">
+  ( "include_file_01.html"の内容が表示されます )
+</div>
+
+<div data-include="include_file_02.html">
+    ( "include_file_02.html"の内容が表示されます )
+</div>
 ```
 
 ## Shadow DOM
