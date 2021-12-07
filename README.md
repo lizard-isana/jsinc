@@ -1,10 +1,13 @@
 # JSInc - JavaScript Client-side Includes
 
 ## How to use
+
 Include JSInc on your website.
+
 ```HTML
 <script src="./dist/jsinc.min.js"></script>
 ```
+
 And initialize with the target element and load the include file.
 
 ```JavaScript 
