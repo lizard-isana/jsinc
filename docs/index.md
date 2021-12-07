@@ -15,7 +15,7 @@ https://github.com/lizard-isana/jsinc/
 
 ```HTML
 
-<script src="/path/to/script/jsinc.js"></script>
+<script src="/path/to/script/jsinc.min.js"></script>
 
 ```
 
@@ -78,7 +78,7 @@ inc.load("inc.html");
 ## SSI/PHP Includeとの違い
 JavaScriptを使用したCSI(Client Side Includes)は、サーバ上で実行される通常のSSI(Server Side Includes)とは異なり、ブラウザ上で一旦ページが構築された後で、わずかに遅れてインクルード部分の外部ファイルが読み込まれます。
 
-このわずかな時間差は、通常のHTMLを表示する場合にはほとんど問題になりませんが、スクリプトやスタイルシートなどで、読み込み後のページの内容を操作する場合には、意図した挙動にならない場合があります。
+このわずかな時間差は、通常のHTMLを表示する場合にはほとんど問題になりませんが、スクリプトなどで、読み込み後のページの内容を操作する場合には、意図した挙動にならない場合があります。
 
 読み込まれたインクルード部分を操作したい場合や、インクルードが読み込まれた後のページ全体を操作したい場合は、別項で説明するHookなどを利用して、適切なタイミングでスクリプトが動作するように設定する必要があります。
 
@@ -192,6 +192,7 @@ inc.post_file_load_hook(function(file){
 以下のような指定で`polyfill.io`のポリフィルを読み込むことで表示ができます。
 ```HTML
   <script src="https://polyfill.io/v3/polyfill.min.js?features=default%2Ces2015%2CReflect.set%2Cfetch" crossorigin="anonymous"></script>
+  <script src="/path/to/script/jsinc.min.js"></script>
 ```
 
 ## License
