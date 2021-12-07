@@ -1,2 +1,1 @@
-# jsinc
-JavaScript Client-side Includes
+# JSInc - JavaScript Client-side Includes
