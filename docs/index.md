@@ -14,9 +14,9 @@ https://github.com/lizard-isana/jsinc/
 3. load()メソッドでファイルを読み込む
 
 ```HTML
-
+...
 <script src="/path/to/script/jsinc.min.js"></script>
-
+...
 ```
 
 ```JavaScript 
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function(){
 </div>
 
 <div data-include="include_file_02.html">
-    ( "include_file_02.html"の内容が表示されます )
+  ( "include_file_02.html"の内容が表示されます )
 </div>
 ```
 
@@ -166,15 +166,15 @@ JSIncは、初期化時やファイルの読み込み時のパラメータや読
 
 ```JavaScript
 const file = (function(input_string){
-    const str = input_string.split("/").slice(-1)[0]; // ディレクトリトラバーサル/ CORS対策
-    return String(str).replace(/&/g, '&amp;')
-    .replace(/\?/g, '&#63;')
-    .replace(/#/g, '&#35;')
-    .replace(/\//g, '&#47;')
-    .replace(/>/g, '&gt;')
-    .replace(/</g, '&lt;')
-    .replace(/\"/g, '&quot;')
-    .replace(/\'/g, '&#039;') サニタイズ
+  const str = input_string.split("/").slice(-1)[0]; // ディレクトリトラバーサル/ CORS対策
+  return String(str).replace(/&/g, '&amp;')
+  .replace(/\?/g, '&#63;')
+  .replace(/#/g, '&#35;')
+  .replace(/\//g, '&#47;')
+  .replace(/>/g, '&gt;')
+  .replace(/</g, '&lt;')
+  .replace(/\"/g, '&quot;')
+  .replace(/\'/g, '&#039;') サニタイズ
 })()
 
 const path = "./path/to/include/";
