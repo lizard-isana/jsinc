@@ -10,10 +10,7 @@ const JSInc = class{
     this.Storage.PostParseHook = [];
     this.Storage.PostContentLoadHook = [];
     this.Storage.PostPageLoadHook = [];
-
     this.element = element;
-    this.LoadedScripts = [];
-    this.LoadedStyles = [];
     if(option && option.mode != undefined){
       this.mode = option.mode;
     }else{
@@ -23,16 +20,6 @@ const JSInc = class{
       this.shadow = option.shadow;
     }else{
       this.shadow = false;
-    }
-    if(option && option.callback != undefined){
-      this.callback = option.callback;
-    }else{
-      this.callback = undefined;
-    }
-    if(option && option.sanitize != undefined){
-      this.sanitize = option.sanitize;
-    }else{
-      this.sanitize = true;
     }
   }
   #add_post_file_load_hook = function (f) {
