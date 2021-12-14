@@ -9,17 +9,19 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/12.2.0/markdown-it.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.7.0/highlightjs-line-numbers.min.js"></script>
-  <script src="./assets/js/jsinc.min.js"></script>
-  <link rel="stylesheet" href="./assets/css/default.css" />
+  <script src="../dist/jsinc.js"></script>  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css" />
-
+  
   <script>
     document.addEventListener('DOMContentLoaded', function(){
+
+      const head_element = document.querySelector("head");
+      const head_inc = new JSInc(head_element);
+      head_inc.load("append.html");
 
       const element = document.querySelector("#main");
       const inc = new JSInc(element);
 
-      // 
       inc.post_file_load_hook(function(file){
         var md = window.markdownit({
           html: true,
