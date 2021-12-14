@@ -93,6 +93,9 @@ const JSInc = class{
         target = this.element;
       }
       target.appendChild(dom);
+      return;
+    })
+    .then(() => {
       if (this.Storage.PostContentLoadHook.length > 0) {
         for (let i in this.Storage.PostContentLoadHook) {
           this.Storage.PostContentLoadHook[i]();
@@ -105,7 +108,6 @@ const JSInc = class{
           JSIncGlobal.Storage.PostPageLoadHook.length[i]();
         }
       }
-
     })
     .catch(function(error) {
       console.error('Error:', error);

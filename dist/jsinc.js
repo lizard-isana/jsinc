@@ -144,7 +144,8 @@ const JSInc = (_add_post_file_load_hook = /*#__PURE__*/new WeakMap(), _add_post_
         }
 
         target.appendChild(dom);
-
+        return;
+      }).then(function () {
         if (_this2.Storage.PostContentLoadHook.length > 0) {
           for (let i in _this2.Storage.PostContentLoadHook) {
             _this2.Storage.PostContentLoadHook[i]();
