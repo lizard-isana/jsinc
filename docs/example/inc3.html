@@ -1,8 +1,9 @@
 <div class="inner">
-  読み込まれたみっつめの外部HTMLです。こちらもShadowDOM内に読み込まれています。<br>
-  外部スタイルシートを使用しても、Shadow DOMの外には影響を与えません。
+  <p>読み込まれたみっつめの外部HTMLです（data-include属性を使っての読み込みです）。こちらもShadowDOM内に読み込まれています。</p>
+  <p>外部スタイルシートを使用しても、Shadow DOMの外には影響を与えません。このファイルには、外部スタイルシートを通じて、以下のようなスタイルシートが適用されています。</p>
+  <pre> *{color:steelblue;}</pre>
 </div>
-<link rel="stylesheet" href="assets/css/inc.css">
+<link rel="stylesheet" href="../assets/css/inc.css">
 <script>
   console.log("This is appended script3.")
 </script>

@@ -6,19 +6,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JSInc</title>
   <script src="https://polyfill.io/v3/polyfill.min.js?features=default,es2015,fetch" crossorigin="anonymous"></script>
-  <script src="../assets/js/jsinc.js"></script>
+  <script src="../../src/jsinc.es6.js"></script>
+
   <link rel="stylesheet" href="../assets/css/default.css" />
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       const head_element = document.querySelector("head");
       const head_inc = new JSInc(head_element);
-      head_inc.load("append.html");
+
+      head_inc.load("header_inc.html");
 
       const element = document.querySelector(".target1");
       const inc = new JSInc(element);
-      inc.load("inc.html");
 
+      inc.load("inc1.html");
       const element2 = document.querySelector(".target2");
       const inc2 = new JSInc(element2,{
         shadow:true,
@@ -50,8 +52,8 @@
   </style>
 </head>
 <body>
-  <main>
-    <div class="outside">インクルードの外です</div>
+  <main id="main">
+    <div class="outside">インクルードの外です。</div>
     <div class="target1"></div>
     <div class="target2"></div>
     <div class="target3" data-include="inc3.html"></div>

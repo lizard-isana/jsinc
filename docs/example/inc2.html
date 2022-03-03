@@ -3,8 +3,12 @@
     color:orange;
   }
 </style>
-<div class="inner">読み込まれたふたつめの外部HTMLです。ShadowDOM内に読み込まれています<br>
-  要素がカプセル化されているため、読み込んだインクルードファイル内に記述されたCSSはShadow DOM内だけに適用されています。</div>
+<p>読み込まれたふたつめの外部HTMLです。ShadowDOM内に読み込まれています<br>
+  要素がカプセル化されているため、読み込んだインクルードファイル内に記述されたCSSはShadow DOM内だけに適用されています。このファイルには以下のようなスタイルが適用されています。</p>
+  <pre>
+    *{color:orange;}
+  </pre>
+
 <script>
   console.log("This is appended script2.")
 </script>
