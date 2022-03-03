@@ -8,8 +8,6 @@
   <script src="https://polyfill.io/v3/polyfill.min.js?features=default,es2015,fetch" crossorigin="anonymous"></script>
   <script src="../assets/js/jsinc.min.js"></script>  
 
-  <link rel="stylesheet" href="../assets/css/default.css" />
-
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       const head_element = document.querySelector("head");
@@ -43,21 +41,14 @@
     });
 
   </script>
-
-  <style>
-    *{
-      color:red;
-      margin-bottom:1em;
-    }
-  </style>
 </head>
 <body>
   <main id="main">
-    <div class="outside">インクルードの外です。</div>
-    <div class="target1"></div>
-    <div class="target2"></div>
-    <div class="target3" data-include="inc3.html"></div>
-    <div class="outside">インクルードの外です</div>
+    <div class="section outside">このセクションはインクルードの外です。ヘッダ内で読み込まれたスタイルシート(マージンなど)と、下で読み込まれたインクルードに含まれたスタイルが効いている状態です。</div>
+    <div class="section target1"></div>
+    <div class="section target2"></div>
+    <div class="section target3" data-include="inc3.html"></div>
+    <div class="section outside">このセクションはインクルードの外です。</div>
   </main>
 </body>
 </html>
