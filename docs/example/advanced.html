@@ -71,9 +71,9 @@
       //同一ページ内の全てのインクルードファイルが読み込まれた後で一度だけ実行されるフックです。
       //インクルード内の要素を含む生成されたページ全体にJSでアクセスするためには、このフックを使う必要があります。
       inc.post_page_load_hook(function(){
-        const li = document.querySelectorAll("li");
-        console.log(li.length)
         console.log("post_page_load_hook is triggered!")
+        const li = document.querySelectorAll("li");
+        console.log("list element length = ",li.length)
         return;
       })
 
