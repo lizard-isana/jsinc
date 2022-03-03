@@ -70,7 +70,7 @@ const JSInc = class{
     .then((dom) => {
       if (this.Storage.PostParseHook.length > 0) {
         for (var i in this.Storage.PostParseHook) {
-          dom.body = this.Storage.PostParseHook[i](dom.body);
+          dom = this.Storage.PostParseHook[i](dom);
         }
       }
       let target;
