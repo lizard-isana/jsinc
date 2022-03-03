@@ -9,6 +9,9 @@ JavaScriptで外部のhtmlファイルなどをインクルードするための
 ## Source Code
 https://github.com/lizard-isana/jsinc/
 
+## Example
+https://lizard-isana.github.io/jsinc/example/
+
 ## 使い方
 1. ライブラリを読み込む
 2. DOM要素でJSIncを初期化
@@ -34,9 +37,7 @@ document.addEventListener('DOMContentLoaded', function(){
 </div>
 ```
 
-
 あるいは、HTMLのdata属性を使って、ファイル指定をHTML側に書いておけば、JSを書き換えることなくファイルを読み込めます。
-
 
 ```JavaScript
 document.addEventListener('DOMContentLoaded', function(){
@@ -110,7 +111,7 @@ inc.post_file_load_hook(function(file){
 ```
 
 ### post_parse_hook
-post_parse_hook は、読み込まれたファイルがHTMLとしてパースされた後、ページに埋め込まれる前に実行されるフックです。引数として、HTMLのDOMとしてパースされたコンテンツが渡されるので、通常のDOM操作でコンテンツにアクセスできます。returnで戻した内容がインクルードとしてページに埋め込まれます。
+post_parse_hook は、読み込まれたファイルがHTMLとしてパースされた後、ページに埋め込まれる前に実行されるフックです。HTMLのDOMとしてパースされたコンテンツが引数として渡されるので、通常のDOM操作でコンテンツにアクセスできます。returnで戻した内容がインクルードとしてページに埋め込まれます。
 
 以下の例では、新たにCSSを読み込み、レンダリングされたコンテンツにスタイルを適用しています。
 
