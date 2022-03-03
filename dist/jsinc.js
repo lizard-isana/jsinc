@@ -142,8 +142,8 @@ const JSInc = (_add_post_file_load_hook = /*#__PURE__*/new WeakMap(), _add_post_
         JSIncGlobal.Storage.display_file_num++;
 
         if (JSIncGlobal.Storage.PostPageLoadHook.length > 0 && JSIncGlobal.Storage.loaded_file_num == JSIncGlobal.Storage.display_file_num) {
-          for (var i in JSIncGlobal.Storage.PostPageLoadHook.length) {
-            JSIncGlobal.Storage.PostPageLoadHook.length[i]();
+          for (var i in JSIncGlobal.Storage.PostPageLoadHook) {
+            JSIncGlobal.Storage.PostPageLoadHook[i]();
           }
         }
       }).catch(function (error) {
