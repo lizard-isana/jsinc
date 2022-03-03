@@ -91,8 +91,8 @@ const JSInc = class{
       JSIncGlobal.Storage.display_file_num = JSIncGlobal.Storage.display_file_num || 0;
       JSIncGlobal.Storage.display_file_num++;
       if (JSIncGlobal.Storage.PostPageLoadHook.length > 0 && JSIncGlobal.Storage.loaded_file_num == JSIncGlobal.Storage.display_file_num) {
-        for (var i in JSIncGlobal.Storage.PostPageLoadHook.length) {
-          JSIncGlobal.Storage.PostPageLoadHook.length[i]();
+        for (var i in JSIncGlobal.Storage.PostPageLoadHook) {
+          JSIncGlobal.Storage.PostPageLoadHook[i]();
         }
       }
     })

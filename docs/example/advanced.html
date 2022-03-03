@@ -8,7 +8,11 @@
   <script src="https://polyfill.io/v3/polyfill.min.js?features=default,es2015,fetch" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.3/purify.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/12.2.0/markdown-it.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="../assets/js/jsinc.js"></script>
+  <!--
+    <script src="../assets/js/jsinc.js"></script>
+  -->
+  <script src="../../src/jsinc.es6.js"></script>
+
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -41,8 +45,8 @@
 
       // フックはいくつでも登録できます
       inc.post_file_load_hook(function(file){
-        console.log("file_load_hook is triggered again!");
-        //Hookは登録した順番に実行されます。この段階で先に呼ばれたfile_load_hookでMarkdownがレンダリングされ、DOMPurifyでscriptタグが除去されているのが確認できます。
+        console.log("post_file_load_hook is triggered again!");
+        //Hookは登録した順番に実行されます。この段階で先に呼ばれたpost_file_load_hookでMarkdownがレンダリングされ、DOMPurifyでscriptタグが除去されているのが確認できます。
         console.log(file)
         return file;
       })
@@ -63,6 +67,11 @@
       // ターゲットとなる要素内にコンテンツが読み込まれた後に実行されるフックです
       inc.post_content_load_hook(function(){
         console.log("content_load_hook is triggered!")
+        return;
+      })
+
+      inc.post_page_load_hook(function(){
+        console.log("post_page_load_hook is triggered!")
         return;
       })
 
