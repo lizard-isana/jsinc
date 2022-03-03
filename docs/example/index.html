@@ -12,13 +12,12 @@
     document.addEventListener('DOMContentLoaded', function () {
       const head_element = document.querySelector("head");
       const head_inc = new JSInc(head_element);
-
       head_inc.load("header_inc.html");
 
       const element = document.querySelector(".target1");
       const inc = new JSInc(element);
-
       inc.load("inc1.html");
+
       const element2 = document.querySelector(".target2");
       const inc2 = new JSInc(element2,{
         shadow:true,
@@ -32,10 +31,10 @@
       for(let i = 0, ln=includes.length;i<ln;i++){
         file =  includes[i].dataset.include;
         jsinc[i] = new JSInc(includes[i],{
-        shadow:true,
-        mode:"open"
-      });
-        jsinc[i].load(file);
+          shadow:true,
+          mode:"open"
+        });
+      jsinc[i].load(file);
       }
 
     });
