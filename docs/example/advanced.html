@@ -18,9 +18,7 @@
     document.addEventListener('DOMContentLoaded', function () {
 
       const element = document.querySelector(".target");
-      const inc = new JSInc(element,{
-        shadow:true
-      });
+      const inc = new JSInc(element);
 
       // 処理の過程にJSで介入できるhookが複数用意されています。
       // ここでは、Markdown形式のファイルを読み込んで、Markdown-Itでレンダリングし、DOMPurifyでサニタイズして表示しています。
@@ -70,7 +68,11 @@
         return;
       })
 
+      //同一ページ内の全てのインクルードファイルが読み込まれた後で一度だけ実行されるフックです。
+      //インクルード内の要素を含む生成されたページ全体にJSでアクセスするためには、このフックを使う必要があります。
       inc.post_page_load_hook(function(){
+        const li = document.querySelectorAll("li");
+        console.log(li.length)
         console.log("post_page_load_hook is triggered!")
         return;
       })
