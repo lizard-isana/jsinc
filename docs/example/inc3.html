@@ -1,14 +1,9 @@
-<div class="inner">
+<div>
   <p>読み込まれたみっつめの外部HTMLです（data-include属性を使っての読み込みです）。こちらもShadowDOM内に読み込まれています。</p>
   <p>このファイルには、外部スタイルシートを通じて、以下のようなスタイルシートが適用されています。外部スタイルシートを使用しても、Shadow DOMの外には影響を与えません。</p>
   <pre> *{color:steelblue;}</pre>
+  <p class="test">なお、ShadowDOM内のスクリプトからShadowDOM内の要素にアクセスするためには、modeがopenでなければならず、shadowRootを介する必要があります（ソースコードとコンソールを参照）。</p>
 </div>
-<div class="test">ShadowDOM内のスクリプトからShadowDOM内の要素にアクセスするためには、modeがopenである必要があります。</div>
-<style>
-  .test{
-    visibility: hidden;
-  }
-</style>
 <link rel="stylesheet" href="../assets/css/inc.css">
 <script>
   const root = document.querySelector(".target3").shadowRoot;

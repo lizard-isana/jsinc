@@ -8,7 +8,7 @@
   <script src="https://polyfill.io/v3/polyfill.min.js?features=default,es2015,fetch" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.3/purify.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/12.2.0/markdown-it.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="assets/js/jsinc.js"></script>
+  <script src="../assets/js/jsinc.js"></script>
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -24,8 +24,8 @@
       // file_load_hook は、ファイルが読み込まれた後、DOMとしてパースされる前に実行されるフックです。
       // 引数として、読み込まれたファイルの内容がテキストとして渡されます。returnで戻した内容がHTMLとしてパースされます。
       
-      inc.file_load_hook(function(file){
-        console.log("file_load_hook is triggered!")
+      inc.post_file_load_hook(function(file){
+        console.log("post_file_load_hook is triggered!")
 
         var md = window.markdownit({
           html: true,
@@ -40,9 +40,9 @@
       })
 
       // フックはいくつでも登録できます
-      inc.file_load_hook(function(file){
+      inc.post_file_load_hook(function(file){
         console.log("file_load_hook is triggered again!");
-        //Hookは登録した順番に実行されます。この段階で先に呼ばれたfile_load_hookでMarkdownがレンダリングされ、scriptタグが除去されているのが分かります。
+        //Hookは登録した順番に実行されます。この段階で先に呼ばれたfile_load_hookでMarkdownがレンダリングされ、DOMPurifyでscriptタグが除去されているのが確認できます。
         console.log(file)
         return file;
       })
@@ -55,13 +55,13 @@
         // ここでは、新たにCSSを読み込み、レンダリングされたコンテンツにスタイルを適用しています。
         const style = document.createElement("link");
         style.setAttribute("rel","stylesheet")
-        style.setAttribute("href","./assets/css/inc.css");
+        style.setAttribute("href","../assets/css/inc.css");
         dom.appendChild(style);
         return dom;
       })
 
       // ターゲットとなる要素内にコンテンツが読み込まれた後に実行されるフックです
-      inc.content_load_hook(function(){
+      inc.post_content_load_hook(function(){
         console.log("content_load_hook is triggered!")
         return;
       })
