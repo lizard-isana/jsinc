@@ -3,7 +3,15 @@
   <p>外部スタイルシートを使用しても、Shadow DOMの外には影響を与えません。このファイルには、外部スタイルシートを通じて、以下のようなスタイルシートが適用されています。</p>
   <pre> *{color:steelblue;}</pre>
 </div>
+<div class="test">ShadowDOM内のスクリプトからShadowDOM内の要素にアクセスするためには、modeがopenである必要があります。</div>
+<style>
+  .test{
+    visibility: hidden;
+  }
+</style>
 <link rel="stylesheet" href="../assets/css/inc.css">
 <script>
+  const root = document.querySelector(".target3").shadowRoot;
+  console.log(root.querySelector(".test").innerHTML)
   console.log("This is appended script3.")
 </script>

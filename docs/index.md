@@ -66,6 +66,7 @@ JSIncの初期化時に、shadowオプションとmodeオプションを設定�
 
 Shadow DOMについての詳しい説明は、以下の参考ページなどを参照して下さい。
 cf.[shadow DOM の使い方 - Web Components | MDN](https://developer.mozilla.org/ja/docs/Web/Web_Components/Using_shadow_DOM)
+cf.[Shadow DOM | Javascript.info](https://ja.javascript.info/shadow-dom)
 
 ```JavaScript
 const element = document.querySelector(".target");
