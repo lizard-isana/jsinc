@@ -115,7 +115,7 @@ const JSInc = (_add_post_file_load_hook = /*#__PURE__*/new WeakMap(), _add_post_
       }).then(function (dom) {
         if (_this2.Storage.PostParseHook.length > 0) {
           for (var i in _this2.Storage.PostParseHook) {
-            dom.body = _this2.Storage.PostParseHook[i](dom.body);
+            dom = _this2.Storage.PostParseHook[i](dom);
           }
         }
 

@@ -1,0 +1,16 @@
+<style>
+  *{
+    color:blue;
+  }
+</style>
+<div class="inner">
+  読み込まれたひとつめの外部HTMLです。通常のDOM内に読み込まれています。<br>
+  要素がカプセル化されていないため、読み込んだインクルードファイル内に記述されたCSSがページ全体に適用されます。
+</div>
+<p>外部のスクリプトを利用したウィジェットなどは、ShadowDOM内では動作しません。</p>
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">A life is like a garden. Perfect moments can be had, but not preserved, except in memory. LLAP</p>&mdash; Leonard Nimoy (@TheRealNimoy) <a href="https://twitter.com/TheRealNimoy/status/569762773204217857?ref_src=twsrc%5Etfw">February 23, 2015</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<script>
+  console.log("This is appended script1.")
+</script>

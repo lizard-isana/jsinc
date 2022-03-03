@@ -1,0 +1,81 @@
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSInc</title>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=default,es2015,fetch" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.3/purify.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/12.2.0/markdown-it.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="assets/js/jsinc.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+      const element = document.querySelector(".target");
+      const inc = new JSInc(element,{
+        shadow:true
+      });
+
+      // 処理の過程にJSで介入できるhookが複数用意されています。
+      // ここでは、Markdown形式のファイルを読み込んで、Markdown-Itでレンダリングし、DOMPurifyでサニタイズして表示しています。
+
+      // file_load_hook は、ファイルが読み込まれた後、DOMとしてパースされる前に実行されるフックです。
+      // 引数として、読み込まれたファイルの内容がテキストとして渡されます。returnで戻した内容がHTMLとしてパースされます。
+      
+      inc.file_load_hook(function(file){
+        console.log("file_load_hook is triggered!")
+
+        var md = window.markdownit({
+          html: true,
+          linkify: true,
+          breaks: true,
+          typographer: true
+        });
+        file = md.render(file);
+        //ここではmarkdown-itの初期設定でHTMLタグを許可した上で、DOMPurifyを使ってサニタイズしています（これによりスクリプトタグは除去されます） 。
+        file = DOMPurify.sanitize(file);
+        return file;
+      })
+
+      // フックはいくつでも登録できます
+      inc.file_load_hook(function(file){
+        console.log("file_load_hook is triggered again!");
+        //Hookは登録した順番に実行されます。この段階で先に呼ばれたfile_load_hookでMarkdownがレンダリングされ、scriptタグが除去されているのが分かります。
+        console.log(file)
+        return file;
+      })
+
+      // post_parse_hook は、読み込まれたファイルがHTMLとしてパースされた後に実行されるフックです
+      inc.post_parse_hook(function(dom){
+        console.log("post_parse_hook is triggered!");
+
+        // 引数としてHTMLのDOMとしてパースされたコンテンツが渡されるので、通常のDOM操作でコンテンツにアクセスできます
+        // ここでは、新たにCSSを読み込み、レンダリングされたコンテンツにスタイルを適用しています。
+        const style = document.createElement("link");
+        style.setAttribute("rel","stylesheet")
+        style.setAttribute("href","./assets/css/inc.css");
+        dom.appendChild(style);
+        return dom;
+      })
+
+      // ターゲットとなる要素内にコンテンツが読み込まれた後に実行されるフックです
+      inc.content_load_hook(function(){
+        console.log("content_load_hook is triggered!")
+        return;
+      })
+
+      inc.load("inc.md");
+
+    });
+
+  </script>
+
+</head>
+<body>
+  <div class="outside">インクルードの外です</div>
+  <div class="target"></div>
+  <div class="outside">インクルードの外です</div>
+</body>
+</html>
